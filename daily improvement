@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>今日の英単語</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .word-box {
+      border: 2px solid #333;
+      border-radius: 10px;
+      padding: 30px;
+      display: inline-block;
+      margin-top: 50px;
+    }
+    .word {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    .meaning {
+      font-size: 1.2em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>今日の英単語</h1>
+  <div class="word-box" id="wordBox">
+    <div class="word" id="word">Loading...</div>
+    <div class="meaning" id="meaning">Please wait...</div>
+  </div>
+
+  <script>
+    const words = [
+      { word: "resilient", meaning: "回復力のある、弾力のある" },
+      { word: "meticulous", meaning: "細部まで気を配る、几帳面な" },
+      { word: "serene", meaning: "穏やかな、落ち着いた" },
+      { word: "intricate", meaning: "複雑な、入り組んだ" },
+      { word: "abundant", meaning: "豊富な、たくさんの" },
+      // もっと追加可能
+    ];
+
+    function getTodayIndex() {
+      const now = new Date();
+      const dayNumber = Math.floor(now.getTime() / (1000 * 60 * 60 * 24));
+      return dayNumber % words.length;
+    }
+
+    const index = getTodayIndex();
+    document.getElementById("word").textContent = words[index].word;
+    document.getElementById("meaning").textContent = words[index].meaning;
+  </script>
+
+</body>
+</html>
